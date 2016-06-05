@@ -1,0 +1,4 @@
+---
+# vars file for docker_base_image
+
+img_name: joschro/base
