@@ -2,9 +2,9 @@
 # tasks file for docker_base_image
 
 - name: Download mkimage-yum.sh
-  get_url: url=https://raw.githubusercontent.com/docker/docker/master/contrib/mkimage-yum.sh dest=mkimage-yum.sh mode=744
+  get_url: url=https://raw.githubusercontent.com/docker/docker/master/contrib/mkimage-yum.sh dest=/root/mkimage-yum.sh mode=744
   tags: mkimage
 
 - name: Run mkimage-yum.sh to create a docker base image
-  command: /bin/sh ./mkimage-yum.sh {{ img_name }}
+  shell: docker images | grep {{ img_name }} || /bin/sh ./mkimage-yum.sh {{ img_name }}
   tags: mkimage
